@@ -21,3 +21,5 @@ end
 
 # Sample gRPC service
 require "helloworld_services_pb"
+# Constants to help with testing
+require_relative "helpers/constants_helper"
