@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     grpc-rails (0.1.0)
+      grpc (~> 1.26)
       rails (~> 6.0.2, >= 6.0.2.1)
 
 GEM
@@ -68,6 +69,12 @@ GEM
     erubi (1.9.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    google-protobuf (3.11.3-universal-darwin)
+    googleapis-common-protos-types (1.0.4)
+      google-protobuf (~> 3.0)
+    grpc (1.26.0-universal-darwin)
+      google-protobuf (~> 3.8)
+      googleapis-common-protos-types (~> 1.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     loofah (2.4.0)

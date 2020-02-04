@@ -1,3 +1,4 @@
+require "grpc"
 require "grpc/rails/railtie"
 
 module GRPC
