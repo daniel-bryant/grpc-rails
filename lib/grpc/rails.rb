@@ -1,6 +1,6 @@
 require "grpc/rails/railtie"
 
-module Grpc
+module GRPC
   module Rails
     # Your code goes here...
   end

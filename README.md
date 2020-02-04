@@ -1,4 +1,4 @@
-# Grpc::Rails
+# GRPC::Rails
 Short description and motivation.
 
 ## Usage

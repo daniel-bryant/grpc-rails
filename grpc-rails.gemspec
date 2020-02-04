@@ -6,12 +6,12 @@ require "grpc/rails/version"
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
   spec.name        = "grpc-rails"
-  spec.version     = Grpc::Rails::VERSION
+  spec.version     = GRPC::Rails::VERSION
   spec.authors     = ["daniel-bryant"]
   spec.email       = ["bryant.daniel.j@gmail.com"]
   spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of Grpc::Rails."
-  spec.description = "TODO: Description of Grpc::Rails."
+  spec.summary     = "TODO: Summary of GRPC::Rails."
+  spec.description = "TODO: Description of GRPC::Rails."
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
