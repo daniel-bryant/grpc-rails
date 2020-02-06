@@ -5,6 +5,12 @@ class RouteMapperTest < ActiveSupport::TestCase
     assert_kind_of Class, GRPC::Rails::RouteMapper
   end
 
+  test "#protobuf" do
+    route_mapper = GRPC::Rails::RouteMapper.new(TestRegistry.new([]))
+    instance = route_mapper.protobuf("helloworld") { self }
+    assert_instance_of GRPC::Rails::ProtobufMapper, instance
+  end
+
   test "#register" do
     route_set = TestRegistry.new([])
     route_mapper = GRPC::Rails::RouteMapper.new(route_set)
