@@ -4,6 +4,7 @@ PATH
     grpc-rails (0.1.0)
       grpc (~> 1.26)
       rails (~> 6.0.2, >= 6.0.2.1)
+      thor (~> 1.0)
 
 GEM
   remote: https://rubygems.org/
