@@ -28,5 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", "~> 6.0.2", ">= 6.0.2.1"
   spec.add_dependency "grpc", "~> 1.26"
 
+  spec.add_development_dependency "aruba"
+  spec.add_development_dependency "cucumber"
   spec.add_development_dependency "sqlite3"
 end
