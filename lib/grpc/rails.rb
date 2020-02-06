@@ -11,6 +11,8 @@ require "grpc/rails/service_mapper"
 
 module GRPC
   module Rails
-    # Your code goes here...
+    def self.application
+      @application ||= Application.new
+    end
   end
 end
