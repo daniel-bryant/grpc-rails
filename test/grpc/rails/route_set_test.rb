@@ -9,6 +9,11 @@ class RouteSetTest < ActiveSupport::TestCase
     assert_equal [], GRPC::Rails::RouteSet.new.services
   end
 
+  test "#draw" do
+    instance = GRPC::Rails::RouteSet.new.draw { self }
+    assert_instance_of GRPC::Rails::RouteMapper, instance
+  end
+
   test "#register" do
     test_class = Class.new
     route_set = GRPC::Rails::RouteSet.new

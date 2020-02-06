@@ -7,6 +7,10 @@ module GRPC
         @services = []
       end
 
+      def draw(&block)
+        RouteMapper.new(self).instance_eval(&block)
+      end
+
       def register(service_class)
         services << service_class
       end

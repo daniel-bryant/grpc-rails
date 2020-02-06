@@ -6,6 +6,10 @@ module GRPC
         @route_mapper = route_mapper
       end
 
+      def service(service_name, &block)
+        ServiceMapper.new(@proto_name, service_name, self).instance_eval(&block)
+      end
+
       def register(service_class)
         @route_mapper.register(service_class)
       end
