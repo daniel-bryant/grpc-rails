@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "grpc/rails/cli"
+
+GRPC::Rails::CLI.start
