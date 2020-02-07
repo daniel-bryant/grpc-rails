@@ -23,7 +23,9 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  spec.files       = Dir["{app,config,db,exe,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  spec.bindir      = "exe"
+  spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
 
   spec.add_dependency "rails", "~> 6.0.2", ">= 6.0.2.1"
   spec.add_dependency "grpc", "~> 1.26"
