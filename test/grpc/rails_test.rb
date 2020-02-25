@@ -27,5 +27,8 @@ class GRPC::Rails::Test < ActiveSupport::TestCase
 
     reply = greeter.hello(Helloworld::HelloRequest.new(name: "Daniel"), {})
     assert_equal "Hello Daniel!", reply.message
+
+    assert Object.constants.include?(:GreeterServiceImpl)
+    Object.send(:remove_const, :GreeterServiceImpl)
   end
 end

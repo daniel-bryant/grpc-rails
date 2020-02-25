@@ -10,6 +10,9 @@ class ProtobufMapperTest < ActiveSupport::TestCase
       .new("helloworld", TestRegistry.new([]))
     instance = protobuf_mapper.service("greeter") { self }
     assert_instance_of GRPC::Rails::ServiceMapper, instance
+
+    assert Object.constants.include?(:GreeterServiceImpl)
+    Object.send(:remove_const, :GreeterServiceImpl)
   end
 
   test "#register" do
