@@ -5,10 +5,10 @@ class RouteMapperTest < ActiveSupport::TestCase
     assert_kind_of Class, GRPC::Rails::RouteMapper
   end
 
-  test "#protobuf" do
+  test "#package" do
     route_mapper = GRPC::Rails::RouteMapper.new(TestRegistry.new([]))
-    instance = route_mapper.protobuf("helloworld") { self }
-    assert_instance_of GRPC::Rails::ProtobufMapper, instance
+    instance = route_mapper.package("helloworld") { self }
+    assert_instance_of GRPC::Rails::PackageMapper, instance
   end
 
   test "#register" do

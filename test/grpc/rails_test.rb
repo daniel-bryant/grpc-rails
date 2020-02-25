@@ -15,7 +15,7 @@ class GRPC::Rails::Test < ActiveSupport::TestCase
 
   test "integration" do
     GRPC::Rails.application.routes.draw do
-      protobuf :helloworld do
+      package :helloworld do
         service :greeter do
           rpc :hello
         end

@@ -12,17 +12,17 @@ class ServiceTest < ActiveSupport::TestCase
     assert_equal GreeterController, klass.controller_class
   end
 
-  test "#proto_module" do
+  test "#package_module" do
     klass = Class.new
     klass.extend(GRPC::Rails::Service)
-    klass.proto_module = Helloworld
-    assert_equal Helloworld, klass.proto_module
+    klass.package_module = Helloworld
+    assert_equal Helloworld, klass.package_module
   end
 
   test "#reply_class" do
     klass = Class.new
     klass.extend(GRPC::Rails::Service)
-    klass.proto_module = Helloworld
+    klass.package_module = Helloworld
     assert_equal Helloworld::HelloReply, klass.reply_class(:hello)
   end
 end

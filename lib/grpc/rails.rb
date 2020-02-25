@@ -1,7 +1,7 @@
 require "grpc"
 require "grpc/rails/application"
 require "grpc/rails/controller"
-require "grpc/rails/protobuf_mapper"
+require "grpc/rails/package_mapper"
 require "grpc/rails/railtie"
 require "grpc/rails/route_mapper"
 require "grpc/rails/route_set"

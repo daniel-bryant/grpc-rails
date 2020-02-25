@@ -6,10 +6,10 @@ class ServiceMapperTest < ActiveSupport::TestCase
   end
 
   test "#initialize" do
-    protobuf_mapper = TestRegistry.new([])
+    package_mapper = TestRegistry.new([])
     service_mapper = GRPC::Rails::ServiceMapper
-      .new("helloworld", "greeter", protobuf_mapper)
-    service_class = protobuf_mapper.objects.first
+      .new("helloworld", "greeter", package_mapper)
+    service_class = package_mapper.objects.first
 
     assert_equal GreeterServiceImpl, service_class
     assert_equal Helloworld::Greeter::Service, service_class.superclass
@@ -19,10 +19,10 @@ class ServiceMapperTest < ActiveSupport::TestCase
   end
 
   test "#rpc" do
-    protobuf_mapper = TestRegistry.new([])
+    package_mapper = TestRegistry.new([])
     service_mapper = GRPC::Rails::ServiceMapper
-      .new("helloworld", "greeter", protobuf_mapper)
-    service_class = protobuf_mapper.objects.first
+      .new("helloworld", "greeter", package_mapper)
+    service_class = package_mapper.objects.first
 
     service_mapper.rpc(:hello)
     request = Helloworld::HelloRequest.new(name: "Daniel")
