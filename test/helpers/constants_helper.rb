@@ -1,6 +1,6 @@
 class GreeterController < GRPC::Rails::Controller
   def hello
-    { message: "Hello #{request.name}!" }
+    render message: "Hello #{request.name}!"
   end
 end
 

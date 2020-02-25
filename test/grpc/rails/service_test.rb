@@ -5,24 +5,38 @@ class ServiceTest < ActiveSupport::TestCase
     assert_kind_of Module, GRPC::Rails::Service
   end
 
-  test "#controller_class" do
+  test "attr_accessor :controller_class" do
     klass = Class.new
     klass.extend(GRPC::Rails::Service)
     klass.controller_class = GreeterController
     assert_equal GreeterController, klass.controller_class
   end
 
-  test "#package_module" do
+  test "attr_accessor :package_module" do
     klass = Class.new
     klass.extend(GRPC::Rails::Service)
     klass.package_module = Helloworld
     assert_equal Helloworld, klass.package_module
   end
 
-  test "#reply_class" do
+  test "attr_accessor :service_name" do
     klass = Class.new
     klass.extend(GRPC::Rails::Service)
-    klass.package_module = Helloworld
-    assert_equal Helloworld::HelloReply, klass.reply_class(:hello)
+    klass.package_module = :myservice
+    assert_equal :myservice, klass.package_module
+  end
+
+  test "#log_request" do
+    klass = Class.new
+    klass.extend(GRPC::Rails::Service)
+    klass.service_name = :myservice
+
+    out, err = capture_subprocess_io do
+      klass.log_request(:myaction) {}
+    end
+
+    assert_match %r%Started :myservice :myaction at%, out
+    assert_match %r%Completed in%, out
+    assert_equal "", err
   end
 end

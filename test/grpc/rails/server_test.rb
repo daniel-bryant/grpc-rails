@@ -22,7 +22,7 @@ class ServerTest < ActiveSupport::TestCase
       out, err = capture_io { GRPC::Rails::Server.new(app).run }
       assert_match %r%Listening on 0.0.0.0:50051%, out
       assert_match %r%Use Ctrl-C to stop%, out
-      assert_match "", err
+      assert_equal "", err
     end
 
     sleep(0.1) # give just enough time for the server to start
