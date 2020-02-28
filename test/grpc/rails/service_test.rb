@@ -19,13 +19,6 @@ class ServiceTest < ActiveSupport::TestCase
     assert_equal Helloworld, klass.package_module
   end
 
-  test "#reply_class" do
-    klass = Class.new
-    klass.extend(GRPC::Rails::Service)
-    klass.package_module = Helloworld
-    assert_equal Helloworld::HelloReply, klass.reply_class(:hello)
-  end
-
   test "#log_request" do
     klass = Class.new
     klass.extend(GRPC::Rails::Service)
