@@ -9,10 +9,12 @@ module GRPC
 
       def rpc(rpc_name)
         service_class.define_method(rpc_name) do |request, call|
-          controller = self.class.controller_class.new
-          controller.request = request
+          self.class.log_request(self.class.controller_class.name, __method__) do
+            controller = self.class.controller_class.new
+            controller.request = request
 
-          self.class.reply_class(__method__).new(controller.send(__method__))
+            self.class.reply_class(__method__).new(controller.send(__method__))
+          end
         end
       end
 

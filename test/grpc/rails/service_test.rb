@@ -25,4 +25,18 @@ class ServiceTest < ActiveSupport::TestCase
     klass.package_module = Helloworld
     assert_equal Helloworld::HelloReply, klass.reply_class(:hello)
   end
+
+  test "#log_request" do
+    klass = Class.new
+    klass.extend(GRPC::Rails::Service)
+
+    out, err = capture_subprocess_io do
+      retval = klass.log_request('Foo', 'bar') { 'logged request' }
+      assert_equal "logged request", retval
+    end
+
+    assert_match %r%Started Foo#bar at%, out
+    assert_match %r%Completed in%, out
+    assert_equal "", err
+  end
 end

@@ -14,5 +14,9 @@ module GRPC
     def self.application
       @application ||= Application.new
     end
+
+    def self.logger
+      @logger ||= Logger.new(STDOUT)
+    end
   end
 end

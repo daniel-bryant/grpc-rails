@@ -26,9 +26,16 @@ class ServiceMapperTest < ActiveSupport::TestCase
 
     service_mapper.rpc(:hello)
     request = Helloworld::HelloRequest.new(name: "Daniel")
-    response = service_class.new.hello(request, {})
-    assert_instance_of Helloworld::HelloReply, response
-    assert_equal "Hello Daniel!", response.message
+
+    out, err = capture_subprocess_io do
+      response = service_class.new.hello(request, {})
+      assert_instance_of Helloworld::HelloReply, response
+      assert_equal "Hello Daniel!", response.message
+    end
+
+    assert_match %r%Started GreeterController#hello at%, out
+    assert_match %r%Completed in%, out
+    assert_equal "", err
 
     assert Object.constants.include?(:GreeterServiceImpl)
     Object.send(:remove_const, :GreeterServiceImpl)
